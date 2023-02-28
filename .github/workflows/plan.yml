@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
     types: [ closed, opened, synchronize, reopened ]
   issue_comment:
     types: [created]
@@ -28,6 +28,7 @@ jobs:
           hub pr checkout $PR_NUM
         if: github.event_name == 'issue_comment'
 
+      - uses: hashicorp/setup-terraform@v2
 
       - name: Configure Test AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -37,7 +38,7 @@ jobs:
           aws-region: us-east-1
 
       - name: digger tfrun
-        uses: diggerhq/tfrun@main
+        uses: diggerhq/tfrun@dev
         env:
           CONTEXT_GITHUB: ${{ toJson(github) }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

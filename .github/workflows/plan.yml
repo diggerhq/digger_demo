@@ -41,6 +41,10 @@ jobs:
         with:
           terraform_wrapper: false
 
+      - name: whereis terraform
+        run: |
+          whereis terraform
+
       - name: digger tfrun
         uses: diggerhq/tfrun@main
         env:

@@ -38,6 +38,7 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
+        terraform_wrapper: false
 
       - name: digger tfrun
         uses: diggerhq/tfrun@main

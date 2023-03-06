@@ -37,6 +37,8 @@ jobs:
 
       - name: digger tfrun
         uses: diggerhq/tfrun@main
+        with: 
+          entrypoint: test.sh
         env:
           CONTEXT_GITHUB: ${{ toJson(github) }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

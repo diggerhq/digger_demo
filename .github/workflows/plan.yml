@@ -17,16 +17,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Checkout Pull Request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          PR_URL="${{ github.event.issue.pull_request.url }}"
-          PR_NUM=${PR_URL##*/}
-          echo "Checking out from PR #$PR_NUM based on URL: $PR_URL"
-          hub pr checkout $PR_NUM
-        if: github.event_name == 'issue_comment'
         
       - name: Configure Test AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

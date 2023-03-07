@@ -1,7 +1,13 @@
 projects:
-- name: my-project-name
+- name: dev
   branch: /main/
-  dir: .
+  dir: dev
+  workspace: default
+  terraform_version: v0.11.0
+  workflow: myworkflow
+- name: prod
+  branch: /main/
+  dir: prod
   workspace: default
   terraform_version: v0.11.0
   workflow: myworkflow

@@ -27,8 +27,7 @@ jobs:
           echo "Checking out from PR #$PR_NUM based on URL: $PR_URL"
           hub pr checkout $PR_NUM
         if: github.event_name == 'issue_comment'
-
-
+        
       - name: Configure Test AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -36,20 +35,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
-        with:
-          terraform_wrapper: false
-
-      - name: whereis terraform
-        run: |
-          whereis terraform
-
       - name: digger tfrun
         uses: diggerhq/tfrun@changed-files
         env:
           CONTEXT_GITHUB: ${{ toJson(github) }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     pip3 install -q -r requirements.txt
-      #     python3 main.py 

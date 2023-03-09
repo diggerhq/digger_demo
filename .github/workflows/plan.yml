@@ -46,7 +46,7 @@ jobs:
           whereis terraform
 
       - name: digger tfrun
-        uses: diggerhq/tfrun@debug-terraform
+        uses: diggerhq/tfrun@changed-files
         env:
           CONTEXT_GITHUB: ${{ toJson(github) }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

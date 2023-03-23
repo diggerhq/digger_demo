@@ -3,24 +3,13 @@ projects:
   branch: /main/
   dir: dev
   workspace: default
-  terraform_version: v0.11.0
-  workflow: myworkflow
+  workflow_configuration:
+    on_pull_request_pushed: [digger apply]
+    on_pull_request_closed: [digger plan]
+    on_commit_to_default: [digger plan]
 - name: prod
   branch: /main/
   dir: prod
   workspace: default
   terraform_version: v0.11.0
   workflow: myworkflow
-workflows:
-  myworkflow:
-    plan:
-      steps:
-      - run: my-custom-command arg1 arg2
-      - init
-      - plan:
-          extra_args: ["-backend-config", "my-state-file"]
-      - run: my-custom-command arg1 arg2
-    apply:
-      steps:
-      - run: echo hi
-      - apply

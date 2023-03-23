@@ -1,0 +1,9 @@
+projects:
+  - name: dev
+    branch: /main/
+    dir: .
+    workspace: default
+    workflow_configuration:
+      on_pull_request_pushed: [digger apply]
+      on_pull_request_closed: [digger plan]
+      on_commit_to_default: [digger plan]

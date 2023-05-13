@@ -1,7 +1,5 @@
-
-resource "null_resource" "test4" {
-}
-
-# This is a test change
-resource "null_resource" "vrd_test" {
+resource "aws_ssm_parameter" "foo" {
+  name  = "foo"
+  type  = "String"
+  value = "bar"
 }

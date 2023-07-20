@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: digger run
-        uses: diggerhq/digger@feat/plan-policy-checking
+        uses: diggerhq/digger@feat/plan-policy-imporvements
         with:
           setup-aws: true
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}

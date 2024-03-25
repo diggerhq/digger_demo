@@ -1,7 +1,10 @@
-resource "null_resource" "test1" {
+resource "null_resource" "resource1" {
 }
 
-resource "null_resource" "test2" {
+resource "null_resource" "resource2" {
+}
+
+resource "null_resource" "resource3" {
 }
 
 output "xx" {
